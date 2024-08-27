@@ -1,0 +1,60 @@
+name: Example of Using Vault
+
+on:
+  push:
+    branches: [ "actions" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build:
+
+    runs-on: arc-runner-enterprise
+    #runs-on: ubuntu-latest
+    environment: devex
+    permissions:
+      contents: write
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+####################### Vault #################################################
+
+      - name: Import Secrets From Vault
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: ${{ vars.HC_VAULT_PRIVATE }}
+          role: global-gh-actions
+          namespace: admin/devex
+          path: jwt-gh-actions
+          method: jwt
+          jwtGithubAudience: https://github.com/umn-devex
+          secrets: |
+              secret/data/gh_actions/global/secret t1
+
+      - name: Import Secrets From Vault2
+        id: import-secrets2
+        uses: hashicorp/vault-action@v2
+        with:
+          url: ${{ vars.HC_VAULT_PRIVATE }}
+          role: util-container
+          namespace: admin/devex
+          path: jwt-gh-actions
+          method: jwt
+          jwtGithubAudience: https://github.com/umn-devex
+          secrets: |
+              secret/data/gh_actions/util-container/util-container util-container | PANDA_FOOD
+
+####################### Test Output #################################################
+      - name: Show variables variables for testing
+        run: |
+          echo ${{ env.PANDA_FOOD }} | sed 's/./& /g'
+          echo ${{ steps.import-secrets.outputs.t1 }} | sed 's/./& /g'
