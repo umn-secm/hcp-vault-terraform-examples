@@ -23,3 +23,7 @@ vault_address = "https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.
 
 *Metadata*
 `vault kv metadata put -custom-metadata=Membership="Platinum" secret/apps/github/test-secret`
+
+
+## GitHub Actions Example
+

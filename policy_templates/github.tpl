@@ -1,3 +1,3 @@
-path "secret/data/apps/github/test-secret" {
+path "secret/data/apps/github/*" {
   capabilities = ["read", "patch"]
 }
