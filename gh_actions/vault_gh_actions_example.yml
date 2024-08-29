@@ -31,7 +31,7 @@ jobs:
         id: import-secrets
         uses: hashicorp/vault-action@v2
         with:
-          url: ${{ vars.HC_VAULT_PRIVATE }}
+          url: ${{ vars.HCP_VAULT_PRIVATE }}
           role: global-gh-actions
           namespace: admin/devex
           path: jwt-gh-actions
@@ -44,7 +44,7 @@ jobs:
         id: import-secrets2
         uses: hashicorp/vault-action@v2
         with:
-          url: ${{ vars.HC_VAULT_PRIVATE }}
+          url: ${{ vars.HCP_VAULT_PRIVATE }}
           role: util-container
           namespace: admin/devex
           path: jwt-gh-actions
