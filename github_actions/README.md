@@ -1,0 +1,18 @@
+# HCP Vault Terraform Examples
+
+This terraform creates the following vault resources:
+
+- JWT auth backend for github
+- One role and policy that gives access for all the github_org's repositories to read all secrets under secret/github_actions/+ (first level only)
+- Individual roles and policies for each repository that can read all secrets under secret/github_actions/${repository}/* 
+
+## Terraform tfvars
+
+Example terraform.tfvars file
+
+```
+namespace     = "admin/CESI"
+github_org    = "umn-CESI"
+repository    = ["repo_1", "repo_2"]
+vault_address = "https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200"
+```
