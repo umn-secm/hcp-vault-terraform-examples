@@ -8,6 +8,7 @@ env:
   VAULT_ADDRESS: "https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200"
   NAMESPACE: "admin/secm"
   ORG_NAME: ${{ github.repository_owner }}
+  REPO_NAME: ${{ github.repository.name }}
 
 jobs:
   build:
@@ -51,7 +52,7 @@ jobs:
           method: jwt
           jwtGithubAudience: https://github.com/${{ env.ORG_NAME }}
           secrets: |
-              secret/data/github_actions/${{ env.REPO_NAME }} test pizza
+              secret/data/github_actions/${{ env.REPO_NAME }}/test pizza
 
 ####################### Test Output #################################################
       - name: Show variables variables for testing
