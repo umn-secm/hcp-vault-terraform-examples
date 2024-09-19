@@ -8,7 +8,7 @@ This terraform creates the following vault resources:
 
 ## Terraform tfvars
 
-Example terraform.tfvars file
+If you would like to re-use the same variables without inputting them at every terraform plan/apply, create the following terraform.tfvars file at the root of the github_actions directory.
 
 ```
 namespace     = "admin/CESI"

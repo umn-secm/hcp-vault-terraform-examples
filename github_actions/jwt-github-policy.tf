@@ -5,6 +5,6 @@ resource "vault_policy" "global_github_actions" {
 
 resource "vault_policy" "single_repo_github_actions" {
   for_each = toset(var.repository)
-  name     = "${each.value}_github_actions_policy"
+  name     = "${each.value}_github_actions_access_policy"
   policy   = templatefile("${path.root}/policy_templates/single-repo-github-actions.tpl", { repo_name = "${each.value}" })
 }

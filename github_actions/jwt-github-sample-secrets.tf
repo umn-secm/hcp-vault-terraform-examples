@@ -1,4 +1,4 @@
-# Inject sample secrets into vault. Normally secrets should not be stored with this method
+# Inject sample secrets into vault for this demo to illustrte the proper pathing. DO NOT use this method in production.
 
 resource "vault_generic_secret" "global_example" {
   path      = "secret/github_actions/global/test"
