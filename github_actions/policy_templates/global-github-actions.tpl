@@ -1,3 +1,3 @@
-path "secret/data/github_actions/+" {
+path "secret/data/github_actions/global/*" {
   capabilities = ["read"]
 }

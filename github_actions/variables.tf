@@ -16,5 +16,5 @@ variable "github_org" {
 
 variable "repository" {
   type        = list(string)
-  description = "List of repositories to create vault roles/policies for (ex: [\"repo_1\", \"repo_2\"])"
+  description = "List of repositories to create vault roles/policies for (ex: [\"hcp-vault-terraform-examples\", \"repo_2\"])"
 }

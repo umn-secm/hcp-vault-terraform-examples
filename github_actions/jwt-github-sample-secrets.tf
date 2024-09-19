@@ -1,11 +1,11 @@
 # Inject sample secrets into vault. Normally secrets should not be stored with this method
 
 resource "vault_generic_secret" "global_example" {
-  path      = "secret/github_actions/test"
+  path      = "secret/github_actions/global/test"
   data_json = <<EOT
 {
   "foo":   "bar",
-  "pizza": "cheese"
+  "pizza": "global_cheese"
 }
 EOT
 }
@@ -17,7 +17,7 @@ resource "vault_generic_secret" "single_repo_example" {
 {
   "repo": "${each.value}",
   "foo":   "bar",
-  "pizza": "cheese"
+  "pizza": "repo_cheese"
 }
 EOT
 }
