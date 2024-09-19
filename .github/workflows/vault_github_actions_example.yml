@@ -7,7 +7,7 @@ on:
 env:
   VAULT_ADDRESS: "https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200"
   NAMESPACE: "admin/secm"
-  ORG_URL: ${{ github.event.organization.url }}
+  ORG_NAME: ${{ github.event.repository.owner }}
   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
           path: jwt-github-actions
           method: jwt
-          jwtGithubAudience: ${{ env.ORG_URL }}
+          jwtGithubAudience: https://github.com/${{ env.ORG_NAME }}
           secrets: |
               secret/data/github_actions/global/test pizza
 
@@ -50,7 +50,7 @@ jobs:
           namespace: ${{ env.NAMESPACE }}
           path: jwt-github-actions
           method: jwt
-          jwtGithubAudience: ${{ env.ORG_URL }}/${{ env.REPO_NAME }}
+          jwtGithubAudience: https://github.com/${{ env.ORG_NAME }}
           secrets: |
               secret/data/github_actions/${{ env.REPO_NAME }} test pizza
 
