@@ -1,0 +1,61 @@
+name: Example of Using Vault
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  VAULT_ADDRESS: "https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200"
+  NAMESPACE: "admin/secm"
+  ORG_URL: ${{ github.event.organization.url }}
+  REPO_NAME: ${{ github.event.repository.name }}
+
+jobs:
+  build:
+
+    runs-on: arc-runner-enterprise
+    permissions:
+      contents: write
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+####################### Vault #################################################
+
+      - name: Import Secrets From Vault Using Global Role
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: ${{ env.VAULT_ADDRESS }}
+          role: global_github_actions
+          namespace: ${{ env.NAMESPACE }}
+          path: jwt-github-actions
+          method: jwt
+          jwtGithubAudience: ${{ env.ORG_URL }}
+          secrets: |
+              secret/data/github_actions/global/test pizza
+
+      - name: Import Secrets From Vault Using Repo Specific Role
+        id: import-secrets2
+        uses: hashicorp/vault-action@v2
+        with:
+          url: ${{ env.VAULT_ADDRESS }}
+          role: ${{ env.REPO_NAME }}_github_actions
+          namespace: ${{ env.NAMESPACE }}
+          path: jwt-github-actions
+          method: jwt
+          jwtGithubAudience: ${{ env.ORG_URL }}/${{ env.REPO_NAME }}
+          secrets: |
+              secret/data/github_actions/${{ env.REPO_NAME }} test pizza
+
+####################### Test Output #################################################
+      - name: Show variables variables for testing
+        run: |
+          echo ${{ steps.import-secrets.outputs.pizza }} | sed 's/./& /g'
+          echo ${{ steps.import-secrets2.outputs.pizza }} | sed 's/./& /g'
