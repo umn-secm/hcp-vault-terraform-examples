@@ -1,14 +1,7 @@
 # HCP Vault Terraform Examples
 
-## Terraform tfvars
-
-Example terraform.tfvars file
-
-```
-namespace     = "admin/CESI"
-repository    = "umn-CESI/repo_name"
-vault_address = "https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200"
-```
+This repository is intended to provide examples for how to configure your team's namespace to integrate with various secrets consumers and providers.
 
 ## GitHub Actions Example
 
+See [GitHub Actions Example README](./github_actions/README.md)

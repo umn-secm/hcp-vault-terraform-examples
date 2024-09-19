@@ -6,7 +6,7 @@ resource "vault_jwt_auth_backend" "github" {
   bound_issuer       = "https://token.actions.githubusercontent.com"
 }
 
-# jwt auth backend role to be used by all Repos in an Org -- Actions/workflows 
+# jwt auth backend role to be used by ALL Repos in an Org -- Actions/workflows 
 resource "vault_jwt_auth_backend_role" "global_github_actions" {
   depends_on        = [vault_policy.global_github_actions]
   backend           = vault_jwt_auth_backend.github.path
