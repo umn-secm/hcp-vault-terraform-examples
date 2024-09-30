@@ -2,6 +2,7 @@
 
 resource "vault_generic_secret" "global_example" {
   path      = "secret/github_actions/global/test"
+  delete_all_versions = true
   data_json = <<EOT
 {
   "foo":   "bar",
@@ -13,6 +14,7 @@ EOT
 resource "vault_generic_secret" "single_repo_example" {
   for_each  = toset(var.repository)
   path      = "secret/github_actions/${each.value}/test"
+  delete_all_versions = true
   data_json = <<EOT
 {
   "repo": "${each.value}",
