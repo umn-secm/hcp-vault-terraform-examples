@@ -1,4 +1,4 @@
-# Required path for community.hashi_vault.hashi_vault
+# Required path for community.hashi_vault.hashi_vault & Tower HashiCorp Vault Secret Lookup
 path "secret/data/ansible/*" {
   capabilities = ["read"]
 }
