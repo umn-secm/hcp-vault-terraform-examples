@@ -4,9 +4,8 @@
 
 # Enable K/V v2 secrets engine at cesi unit path
 resource "vault_mount" "kvA" {
-  path       = "secret"
+  path       = "secret2"
   type       = "kv-v2"
-  namespace  = var.namespace
 }
 
 # --- Uncomment if creating secrets engine for a sub-namespace ---
