@@ -2,14 +2,9 @@
 # Enable default approle mount
 #----------------------------------------------------------
 
-# Enable approle mount at cesi unit path
+# Enable approle mount at cesi unit path.
+# Can enable at a custom path by defining "path" parameter
 resource "vault_auth_backend" "approle" {
   type       = "approle"
-  namespace  = each.value
+  # path       = "approle2"
 }
-
-# --- Uncomment if creating secrets engine for a sub-namespace ---
-# resource "vault_auth_backend" "approle_subteams" {
-#   type       = "approle"
-#   namespace  = "${var.namespace}/${var.subteam_namespace}"
-# }

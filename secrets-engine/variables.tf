@@ -6,11 +6,5 @@ variable "vault_address" {
 
 variable "namespace" {
   type        = string
-  description = "Prefix with admin/ (ex: admin/secm)"
+  description = "Prefix with admin/ (ex: admin/secm, admin/secm/subteamA)"
 }
-
-# --- Uncomment if creating secrets engine for a sub-namespace ---
-# variable "subteam_namespace" {
-#   type        = string
-#   description = "Prefix with admin/cesi_namespace (ex: admin/secm/subteamA)"
-# }

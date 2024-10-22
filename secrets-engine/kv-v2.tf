@@ -2,15 +2,9 @@
 # Enable secrets engines
 #----------------------------------------------------------
 
-# Enable K/V v2 secrets engine at cesi unit path
+# Enable K/V v2 secrets engine at cesi namespace.
+# path parameter below can be changed to allow for custom naming of enabled kvv2.
 resource "vault_mount" "kvA" {
-  path       = "secret2"
+  path       = "secret"
   type       = "kv-v2"
 }
-
-# --- Uncomment if creating secrets engine for a sub-namespace ---
-# resource "vault_mount" "kvA_subteams" {
-#   path       = "secret"
-#   type       = "kv-v2"
-#   namespace  = "${var.namespace}/${var.subteam_namespace}"
-# }
