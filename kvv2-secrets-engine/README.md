@@ -1,3 +1,7 @@
+## NOTICE
+
+A corresponding policy will be created in this module for you in the `policy_templates` folder. Please update this file as necessary to access the correct secrets that are required.
+
 ## Providers
 
 | Name | Version |
