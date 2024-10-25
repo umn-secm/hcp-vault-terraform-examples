@@ -10,7 +10,7 @@ No modules.
 
 ## Resources
 
-This terraform will create the following resources
+This Terraform will create the following resources
 
 | Name | Type | Description |
 |------|------| ----------- |
@@ -20,10 +20,10 @@ This terraform will create the following resources
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace of the CESI unit within vault | `any` | n/a | yes |
-| <a name="input_vault_address"></a> [vault\_address](#input\_\_address) | The URL address of vault instance. Can be either for the public or private address  | `any` | https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200 | yes |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace of the CESI unit within vault | `string` | n/a | yes |
+| <a name="input_vault_address"></a> [vault\_address](#input\_\_address) | The URL address of vault instance. Can be either for the public or private address  | `string` | https://hcp-vault-private-vault-fc507e0d.5d5b1f21.z1.hashicorp.cloud:8200 | no |
 
-## Outputs
+## Results
 
-This will enable a new kvv2 engine within the namespace.
+This will enable a new kv-v2 engine within the namespace.
 <!-- END_TF_DOCS -->
