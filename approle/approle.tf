@@ -5,8 +5,8 @@
 # Enable approle mount at cesi unit path.
 # Can enable at a custom path by defining "path" parameter
 resource "vault_auth_backend" "approle" {
-  type       = "approle"
-  path       = "approle"
+  type = "approle"
+  path = "approle"
 }
 
 # Create policy in vault for approle
