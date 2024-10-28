@@ -7,5 +7,5 @@ variable "vault_address" {
 variable "namespace" {
   type        = string
   description = "Prefix with admin/ (ex: admin/secm, admin/secm/subteamA)"
-  # default     = "admin/CESI"
+  default     = "admin/secm"
 }
