@@ -15,7 +15,7 @@ resource "vault_policy" "kv-v2_policy" {
   policy = file("${path.root}/policy_templates/kvv2.tpl")
 }
 
-# Assign new policy to general user internal group within namespace
+# Assign new policy to internal group within namespace
 # LIST ALL EXISTING POLICIES in the policies parameter otherwise the current existing policies will be deleted
 # from an existing group
 resource "vault_identity_group_policies" "policy_assignment" {
