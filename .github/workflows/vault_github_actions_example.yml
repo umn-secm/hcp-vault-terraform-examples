@@ -30,7 +30,7 @@ jobs:
 
       - name: Import Secrets From Vault Using Global Role
         id: import-secrets
-        uses: hashicorp/vault-action@v2
+        uses: hashicorp/vault-action@v3
         with:
           url: ${{ env.VAULT_ADDRESS }}
           role: global_github_actions
@@ -43,7 +43,7 @@ jobs:
 
       - name: Import Secrets From Vault Using Repo Specific Role
         id: import-secrets2
-        uses: hashicorp/vault-action@v2
+        uses: hashicorp/vault-action@v3
         with:
           url: ${{ env.VAULT_ADDRESS }}
           role: ${{ env.REPO_NAME }}_github_actions
