@@ -7,6 +7,7 @@ data "vault_auth_backend" "approle" {
 resource "vault_approle_auth_backend_role" "ansible" {
   backend        = data.vault_auth_backend.approle.path
   role_name      = "ansible"
+  secret_id_ttl = "3600s"
   token_policies = ["default", vault_policy.ansible.name]
 }
 
